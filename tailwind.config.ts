@@ -13,6 +13,9 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      boxShadow: {
+        'card': '0 3px 10px rgb(0, 0, 0, 0.2)'
+      }
     },
   },
   plugins: [],
