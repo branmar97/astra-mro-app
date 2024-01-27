@@ -3,7 +3,7 @@ import prisma from "../../lib/prisma"
 export default async function Home() {
   const asset = await prisma.asset.findUnique({
     where: {
-      identifier: 'A7392XKJ'
+      asset_id: 1
     }
   })
 

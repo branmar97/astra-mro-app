@@ -7,19 +7,35 @@ generator client {
 
 datasource db {
   provider  = "postgresql"
-  url  	    = env("DATABASE_URL")
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
- 
+
 model user {
-  user_id     Int       @id @default(autoincrement())
-  email       String    @unique
+  user_id     Int    @id @default(autoincrement())
+  email       String @unique
+  client      client @relation(fields: [client_id], references: [client_id])
+  client_id   Int
   first_name  String
   last_name   String
 }
 
 model asset {
-  asset_id    Int       @id @default(autoincrement())
-  name        String?    
-  identifier  String    @unique
+  asset_id    Int      @id @default(autoincrement())
+  name        String?
+  identifier  String
+  client      client  @relation(fields: [client_id], references: [client_id])
+  client_id   Int    
+
+  // Unique constraint on (client_id, identifier) combination
+  @@unique([client_id, identifier], name: "unique_client_asset_identifier")
+}
+
+model client {
+  client_id     Int     @id @default(autoincrement())
+  name          String
+  primary_email String
+  primary_phone String
+  asset         asset[]
+  user          user[]
 }
