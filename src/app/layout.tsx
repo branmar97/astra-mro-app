@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'CM 360',
-  description: 'Fine-Tuning Your Operations',
+  title: 'Assets App',
+  description: 'EAM',
 }
 
 export default function RootLayout({
