@@ -1,4 +1,4 @@
-import prisma from "../lib/prisma"
+import prisma from "../lib/prisma/prismaClient"
 
 async function seed() {
     const client = await prisma.client.upsert({
@@ -15,10 +15,11 @@ async function seed() {
         where: { user_id: 1 },
         update: {},
         create: {
+            auth_id: '8ba2f045-5024-41ae-8b30-9afb444eda2c',
             first_name: 'Test',
             last_name: 'User',
             client_id: 1,
-            email: 'test-user@test.com'
+            email: 'test-user@test.com',
         }
     })
 

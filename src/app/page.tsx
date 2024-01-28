@@ -1,4 +1,4 @@
-import prisma from "../../lib/prisma"
+import prisma from "../../lib/prisma/prismaClient"
 
 export default async function Home() {
   const asset = await prisma.asset.findUnique({
