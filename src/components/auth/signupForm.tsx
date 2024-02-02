@@ -1,6 +1,6 @@
 'use client'
 
-import { signupAction } from '@/app/actions/signup-action';
+import { checkExistingUserByEmail, signupAction } from '@/app/actions/signupAction';
 import { PhoneInputMask } from '@/common-components/phoneInputMask';
 import { Button, TextField, Typography, Box } from '@mui/material/';
 import { useState } from 'react';
@@ -20,7 +20,11 @@ export const NewUserSchema = z.object({
         .regex(/^\(\d{3}\) \d{3}-\d{4}$/, 'Invalid phone number'),
     email: z
         .string()
-        .email(),
+        .email()
+        .refine(async (email) => {
+            const isExistingUser = await checkExistingUserByEmail(email)
+            return !isExistingUser
+        }, 'User with given email already exists'),
     password: z
         .string()
         .min(8, 'Must be at least 8 characters')
@@ -47,9 +51,10 @@ export default function SignupForm() {
         }
 
         // validate the form data
-        const result = NewUserSchema.safeParse(newUserFormFields)
-
+        const result = await NewUserSchema.safeParseAsync(newUserFormFields)
+        
         if (!result.success) {
+            console.log(result.error)
             setFormErrors(result.error.formErrors.fieldErrors)
             return
         }
