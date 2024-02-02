@@ -1,6 +1,6 @@
 'use client'
 
-import { checkExistingUserByEmail, signupAction } from '@/app/actions/signupAction';
+import { checkExistingUserByEmail, signupAction } from '@/app/actions/auth/signupAction';
 import { PhoneInputMask } from '@/common-components/phoneInputMask';
 import { APP_NAME } from '@/helpers/constants';
 import { Button, TextField, Typography, Box } from '@mui/material/';
@@ -171,7 +171,7 @@ export default function SignupForm() {
                 className='bg-blue-500 text-white p-4'
                 type='submit'
             >
-                Submit
+                Sign Up
             </Button>
         </form>
     )
