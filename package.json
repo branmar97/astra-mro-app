@@ -12,12 +12,18 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@emotion/cache": "^11.11.0",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material-nextjs": "^5.15.6",
     "@prisma/client": "^5.8.1",
     "@supabase/ssr": "^0.0.10",
     "@supabase/supabase-js": "^2.39.3",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-imask": "^7.3.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20",
