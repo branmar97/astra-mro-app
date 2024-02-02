@@ -1,7 +1,8 @@
 'use client'
 
-import { checkExistingUserByEmail, signupAction } from '@/app/actions/signupAction';
+import { checkExistingUserByEmail, signupAction } from '@/app/actions/auth/signupAction';
 import { PhoneInputMask } from '@/common-components/phoneInputMask';
+import { APP_NAME } from '@/helpers/constants';
 import { Button, TextField, Typography, Box } from '@mui/material/';
 import { useState } from 'react';
 import { z } from 'zod';
@@ -54,7 +55,6 @@ export default function SignupForm() {
         const result = await NewUserSchema.safeParseAsync(newUserFormFields)
         
         if (!result.success) {
-            console.log(result.error)
             setFormErrors(result.error.formErrors.fieldErrors)
             return
         }
@@ -65,7 +65,7 @@ export default function SignupForm() {
 
     return (
         <form action={action} className='m-auto flex flex-col space-y-3 w-[34rem] p-10 bg-white rounded-md shadow-lg' noValidate>
-            <Typography className='text-3xl uppercase font-bold mb-6' variant='h2'>Signup</Typography>
+            <Typography className='text-3xl uppercase font-bold mb-6' variant='h2'>Sign up for {APP_NAME}</Typography>
             <Box className='flex w-full justify-between'>
                 <TextField
                     label='First Name'
@@ -171,7 +171,7 @@ export default function SignupForm() {
                 className='bg-blue-500 text-white p-4'
                 type='submit'
             >
-                Submit
+                Sign Up
             </Button>
         </form>
     )

@@ -3,10 +3,11 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '@/theme'
+import { APP_NAME } from '@/helpers/constants'
 
 export const metadata: Metadata = {
-  title: 'Assets App',
-  description: 'EAM',
+  title: `${APP_NAME} App`,
+  description: 'Maintenance, repair, and operations',
 }
 
 export default function RootLayout({

@@ -1,7 +1,7 @@
 'use server'
 
-import createSupabaseClient from '../../../lib/supabase/supabaseClient'
-import prisma from "../../../lib/prisma/prismaClient"
+import createSupabaseClient from '../../../../lib/supabase/supabaseClient'
+import prisma from "../../../../lib/prisma/prismaClient"
 import { NewUserData } from '@/components/auth/signupForm'
 import { redirect } from 'next/navigation'
 
