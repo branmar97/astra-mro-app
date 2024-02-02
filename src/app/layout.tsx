@@ -1,9 +1,8 @@
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import { ThemeProvider } from '@mui/material/styles'
+import theme from '@/theme'
 
 export const metadata: Metadata = {
   title: 'Assets App',
@@ -17,10 +16,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <AppRouterCacheProvider>
-          {children}
-        </AppRouterCacheProvider>
+      <head></head>
+      <body>
+      <AppRouterCacheProvider>
+        <ThemeProvider theme={theme}>
+            {children}
+        </ThemeProvider>
+      </AppRouterCacheProvider>
+        
+        
       </body>
     </html>
   )
