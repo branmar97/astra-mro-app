@@ -2,7 +2,15 @@ Effectively manage your assets, optimize schedules, and gain valuable insights o
 
 ## Getting Started
 
-First, run the development server:
+Using Node v20
+
+First, install the dependencies from root:
+
+```bash'
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -15,3 +23,13 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Useful Commands
+
+```bash
+# Seed the database with data from seed.ts file
+npx prisma db seed
+
+# Run a prisma migration
+npx prisma migrate dev --name name-here
+```
