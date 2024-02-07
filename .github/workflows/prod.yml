@@ -23,13 +23,17 @@ jobs:
         with:
           node-version: "20.x"
 
-      - name: Install dependencies and build
-        run: |
-          npm install
-          npm run build
+      - name: Install dependencies
+        run: npm install
+  
+      - name: Generate Prisma
+        run: npx prisma generate
 
       - name: Apply all pending migrations to the database
         run: npx prisma migrate deploy
+
+      - name: Build Next App
+        run: npx next build
 
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
